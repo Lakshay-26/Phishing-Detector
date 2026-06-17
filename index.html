@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing URL Detector</title>
+    <meta name="description" content="A tool to detect phishing URLs using rule-based analysis.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Decorative background elements -->
+        <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div>
+        
+        <main class="detector-card">
+            <div class="card-header">
+                <div class="shield-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        <path d="M9 12l2 2 4-4"></path>
+                    </svg>
+                </div>
+                <h1>PHISHING URL DETECTOR</h1>
+                <p>Check a URL and find out if it is Safe or Suspicious</p>
+            </div>
+
+            <form id="urlForm" class="input-section">
+                <div class="input-group">
+                    <input type="text" id="urlInput" placeholder="Enter URL here (e.g. https://example.com)..." required autocomplete="off">
+                    <button type="submit" id="checkBtn">
+                        <span id="btnText">CHECK</span>
+                        <div class="spinner hidden" id="loadingSpinner"></div>
+                    </button>
+                </div>
+                <div id="errorMessage" class="error-message hidden">Please enter a valid URL.</div>
+            </form>
+
+            <div id="resultContainer" class="result-section hidden">
+                <div class="result-box" id="resultBox">
+                    <h2 class="result-title">Result</h2>
+                    <div class="status-indicator" id="statusIndicator">
+                        <span class="icon" id="statusIcon"></span>
+                        <span class="text" id="statusText">SAFE</span>
+                    </div>
+                    <ul class="reasons-list" id="reasonsList">
+                        <!-- Reasons will be populated here -->
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="history-section">
+                <h3>Recent Checks</h3>
+                <ul id="historyList" class="history-list">
+                    <li class="empty-history">No URLs checked yet.</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
